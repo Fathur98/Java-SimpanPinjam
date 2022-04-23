@@ -1,9 +1,9 @@
 # Java-SimpanPinjam
 
-1. GET USERS
-METHOD : GET
-ENDPOINT : http://localhost:8080/api/alami/v1/users
-RESPONSE :
+### 1. GET USERS
+* METHOD : GET
+* ENDPOINT : http://localhost:8080/api/alami/v1/users
+* RESPONSE :
 {
     "response_code": "200",
     "response_message": "Success",
@@ -29,10 +29,10 @@ RESPONSE :
     ]
 }
 
-2. GET TRANSACTIONS BY USER ID
-METHOD : GET
-ENDPOINT : http://localhost:8080/api/alami/v1/transactions/0120220101000000001
-RESPONSE :
+### 2. GET TRANSACTIONS BY USER ID
+* METHOD : GET
+* ENDPOINT : http://localhost:8080/api/alami/v1/transactions/0120220101000000001
+* RESPONSE :
 {
     "response_code": "200",
     "response_message": "Success",
@@ -58,10 +58,10 @@ RESPONSE :
     ]
 }
 
-3. GET TRANSACTIONS BY DATE
-METHOD : GET
-ENDPOINT : http://localhost:8080/api/alami/v1/transactions/from=18082020/to=23042022
-RESPONSE :
+### 3. GET TRANSACTIONS BY DATE
+* METHOD : GET
+* ENDPOINT : http://localhost:8080/api/alami/v1/transactions/from=18082020/to=23042022
+* RESPONSE :
 {
     "response_code": "200",
     "response_message": "Success",
@@ -114,16 +114,16 @@ RESPONSE :
     ]
 }
 
-4. ADD USER
-METHOD : POST
-ENDPOINT : http://localhost:8080/api/alami/v1/users
-REQUEST :
+### 4. ADD USER
+* METHOD : POST
+* ENDPOINT : http://localhost:8080/api/alami/v1/users
+* REQUEST :
 {
     "name": "FATHUR RAHMAN JAMIL",
     "date_of_birth": "27061997",
     "address": "JALAN BALADEWA UTARA NO 8"
 }
-RESPONSE :
+* RESPONSE :
 {
     "response_code": "201",
     "response_message": "Success",
@@ -135,16 +135,16 @@ RESPONSE :
     }
 }
 
-6. ADD TRANSACTION
-METHOD : POST
-ENDPOINT : http://localhost:8080/api/alami/v1/transactions
-REQUEST :
+### 5. ADD TRANSACTION
+* METHOD : POST
+* ENDPOINT : http://localhost:8080/api/alami/v1/transactions
+* REQUEST :
 {
     "user_id": "0120220423215649226",
     "type": "PENYERAHAN DANA",
     "amount": "2000000"
 }
-RESPONSE :
+* RESPONSE :
 {
     "response_code": "201",
     "response_message": "Success",
