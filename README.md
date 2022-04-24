@@ -6,24 +6,24 @@
 * RESPONSE :
 {
     "response_code": "200",
-    "response_message": "Success",
+    "response_message": "SUCCESS",
     "data": [
         {
-            "id": "0120220101000000001",
+            "id": "1120220101000000001",
             "name": "WAWAN SETIAWAN",
-            "date_of_birth": "10 Jan 1990",
+            "date_of_birth": "10 JAN 1990",
             "address": "KOMPLEKS ASIA SERASI NO 100"
         },
         {
-            "id": "0120220101000000002",
+            "id": "1120220101000000002",
             "name": "TEGUH SUDIBYANTORO",
-            "date_of_birth": "10 Feb 1991",
+            "date_of_birth": "10 FEB 1991",
             "address": "JALAN PAMEKARAN NO 99"
         },
         {
-            "id": "0120220101000000003",
+            "id": "1120220101000000003",
             "name": "JOKO WIDODO",
-            "date_of_birth": "10 Mar 1992",
+            "date_of_birth": "10 MAR 1992",
             "address": "DUSUN PISANG RT 10 RW 20"
         }
     ]
@@ -31,29 +31,29 @@
 
 ### 2. GET TRANSACTIONS BY USER ID
 * METHOD : GET
-* ENDPOINT : http://localhost:8080/api/alami/v1/transactions/0120220101000000001
+* ENDPOINT : http://localhost:8080/api/alami/v1/transactions/1120220101000000001
 * RESPONSE :
 {
     "response_code": "200",
-    "response_message": "Success",
+    "response_message": "SUCCESS",
     "data": [
         {
-            "id": "0220220101000000001",
-            "user_id": "0120220101000000001",
+            "id": "1220220101000000001",
+            "user_id": "1120220101000000001",
             "user_name": "WAWAN SETIAWAN",
             "type": "PENYERAHAN DANA",
             "currency": "IDR",
             "amount": "1000000",
-            "date": "17 Aug 2020"
+            "date": "17 AUG 2020"
         },
         {
-            "id": "0220220101000000005",
-            "user_id": "0120220101000000001",
+            "id": "1220220101000000005",
+            "user_id": "1120220101000000001",
             "user_name": "WAWAN SETIAWAN",
             "type": "PENYERAHAN DANA",
             "currency": "IDR",
             "amount": "5000000",
-            "date": "01 Dec 2020"
+            "date": "01 DEC 2020"
         }
     ]
 }
@@ -64,52 +64,25 @@
 * RESPONSE :
 {
     "response_code": "200",
-    "response_message": "Success",
+    "response_message": "SUCCESS",
     "data": [
         {
-            "id": "0220220101000000002",
-            "user_id": "0120220101000000002",
+            "id": "1220220101000000002",
+            "user_id": "1120220101000000002",
             "user_name": "TEGUH SUDIBYANTORO",
             "type": "PENYERAHAN DANA",
             "currency": "IDR",
             "amount": "5000000",
-            "date": "18 Aug 2020"
+            "date": "18 AUG 2020"
         },
         {
-            "id": "0220220101000000003",
-            "user_id": "0120220101000000003",
+            "id": "1220220101000000003",
+            "user_id": "1120220101000000003",
             "user_name": "JOKO WIDODO",
             "type": "PEMINJAMAN DANA",
             "currency": "IDR",
             "amount": "2000000",
-            "date": "30 Sep 2020"
-        },
-        {
-            "id": "0220220101000000004",
-            "user_id": "0120220101000000003",
-            "user_name": "JOKO WIDODO",
-            "type": "PENGEMBALIAN DANA",
-            "currency": "IDR",
-            "amount": "1000000",
-            "date": "10 Nov 2020"
-        },
-        {
-            "id": "0220220101000000005",
-            "user_id": "0120220101000000001",
-            "user_name": "WAWAN SETIAWAN",
-            "type": "PENYERAHAN DANA",
-            "currency": "IDR",
-            "amount": "5000000",
-            "date": "01 Dec 2020"
-        },
-        {
-            "id": "0220220101000000006",
-            "user_id": "0120220101000000002",
-            "user_name": "TEGUH SUDIBYANTORO",
-            "type": "PENGAMBILAN DANA",
-            "currency": "IDR",
-            "amount": "2000000",
-            "date": "01 Dec 2020"
+            "date": "30 SEP 2020"
         }
     ]
 }
@@ -126,9 +99,9 @@
 * RESPONSE :
 {
     "response_code": "201",
-    "response_message": "Success",
+    "response_message": "SUCCESS",
     "data": {
-        "id": "0120220423221433488",
+        "id": "1120220424152243529",
         "name": "FATHUR RAHMAN JAMIL",
         "date_of_birth": "27 Jun 1997",
         "address": "JALAN BALADEWA UTARA NO 8"
@@ -140,21 +113,21 @@
 * ENDPOINT : http://localhost:8080/api/alami/v1/transactions
 * REQUEST :
 {
-    "user_id": "0120220423215649226",
+    "user_id": "1120220101000000001",
     "type": "PENYERAHAN DANA",
     "amount": "2000000"
 }
 * RESPONSE :
 {
     "response_code": "201",
-    "response_message": "Success",
+    "response_message": "SUCCESS",
     "data": {
-        "id": "0220220423221521186",
-        "user_id": "0120220423221433488",
-        "user_name": "FATHUR RAHMAN JAMIL",
+        "id": "1220220424152333090",
+        "user_id": "1120220101000000001",
+        "user_name": "WAWAN SETIAWAN",
         "type": "PENYERAHAN DANA",
         "currency": "IDR",
         "amount": "2000000",
-        "date": "23 Apr 2022"
+        "date": "24 Apr 2022"
     }
 }

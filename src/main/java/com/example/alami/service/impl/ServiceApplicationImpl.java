@@ -34,9 +34,9 @@ public class ServiceApplicationImpl implements ServiceApplication {
             String dateOfBirth = new SimpleDateFormat("dd MMM yyyy").format(entityUser.getDateOfBirth());
 
             ResponseUser.DataUser dataUser = new ResponseUser.DataUser();
-            dataUser.setId(entityUser.getId());
+            dataUser.setId(String.valueOf(entityUser.getId()));
             dataUser.setName(entityUser.getName());
-            dataUser.setDateOfBirth(dateOfBirth);
+            dataUser.setDateOfBirth(dateOfBirth.toUpperCase());
             dataUser.setAddress(entityUser.getAddress());
 
             dataUserList.add(dataUser);
@@ -44,7 +44,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
 
         ResponseUser responseListUser = new ResponseUser();
         responseListUser.setResponseCode("200");
-        responseListUser.setResponseMessage("Success");
+        responseListUser.setResponseMessage("SUCCESS");
         responseListUser.setData(dataUserList);
         return responseListUser;
     }
@@ -58,40 +58,40 @@ public class ServiceApplicationImpl implements ServiceApplication {
         ResponseUser responseUser = new ResponseUser();
         String responseCode = "400", responseMessage;
         if (name.isEmpty()) {
-            responseMessage = "Name Can't be Empty";
+            responseMessage = "NAME CAN'T BE EMPTY";
         } else if (name.length() > 35) {
-            responseMessage = "Max Character for Name is 35 Characters";
+            responseMessage = "MAX CHARACTER FOR NAME IS 35 CHARACTERS";
         } else if (!name.replace(" ", "").chars().allMatch(Character::isLetter)) {
-            responseMessage = "Name Must be ALPHABETICAL Characters";
+            responseMessage = "NAME MUST BE ALPHABETICAL CHARACTERS";
         } else if (dateOfBirth.isEmpty()) {
-            responseMessage = "Date of Birth Can't be Empty";
+            responseMessage = "DATE OF BIRTH CAN'T BE EMPTY";
         } else if (dateOfBirth.length() > 8 || !isFormatDate(dateOfBirth)) {
-            responseMessage = "Date of Birth Must in DDMMYYYY Format";
+            responseMessage = "DATE OF BIRTH MUST IN DDMMYYYY FORMAT";
         } else if (Objects.requireNonNull(getDate(dateOfBirth)).after(new Date())) {
-            responseMessage = "Date of Birth is Invalid";
+            responseMessage = "DATE OF BIRTH IS INVALID";
         } else if (address.isEmpty()) {
-            responseMessage = "Address Can't be Empty";
+            responseMessage = "ADDRESS CAN'T BE EMPTY";
         } else if (address.length() > 35) {
-            responseMessage = "Max Character for Address is 35 Characters";
+            responseMessage = "MAX CHARACTER FOR ADDRESS IS 35 CHARACTERS";
         } else if (!address.replace(" ", "").chars().allMatch(Character::isLetterOrDigit)) {
-            responseMessage = "Address Must be ALPHABETICAL or NUMERICAL Characters";
+            responseMessage = "ADDRESS MUST BE ALPHABETICAL OR NUMERICAL CHARACTERS";
         } else {
-            String id = "01" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+            String id = "11" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
 
             EntityUser entityUser = new EntityUser();
-            entityUser.setId(id);
+            entityUser.setId(Long.valueOf(id));
             entityUser.setName(name);
             entityUser.setDateOfBirth(getDate(dateOfBirth));
             entityUser.setAddress(address);
             repositoryUser.save(entityUser);
 
             responseCode = "201";
-            responseMessage = "Success";
+            responseMessage = "SUCCESS";
 
             String dateOfBirthNew = new SimpleDateFormat("dd MMM yyyy").format(entityUser.getDateOfBirth());
 
             ResponseUser.DataUser dataUser = new ResponseUser.DataUser();
-            dataUser.setId(entityUser.getId());
+            dataUser.setId(String.valueOf(entityUser.getId()));
             dataUser.setName(entityUser.getName());
             dataUser.setDateOfBirth(dateOfBirthNew);
             dataUser.setAddress(entityUser.getAddress());
@@ -110,15 +110,15 @@ public class ServiceApplicationImpl implements ServiceApplication {
 
         String responseCode = "400", responseMessage;
         if (from.isEmpty() || to.isEmpty()) {
-            responseMessage = "Date Can't be Empty";
+            responseMessage = "DATE CAN'T BE EMPTY";
         } else if (from.length() > 8 || !isFormatDate(from) || to.length() > 8 || !isFormatDate(to)) {
-            responseMessage = "Date Must in DDMMYYYY Format";
+            responseMessage = "DATE MUST IN DDMMYYYY FORMAT";
         } else if (Objects.requireNonNull(getDate(from)).after(new Date())) {
-            responseMessage = "Date is Invalid";
+            responseMessage = "DATE IS INVALID";
         } else if (Objects.requireNonNull(getDate(to)).after(new Date())) {
-            responseMessage = "Date is Invalid";
+            responseMessage = "DATE IS INVALID";
         } else if (Objects.requireNonNull(getDate(from)).after(getDate(to))) {
-            responseMessage = "Date is Invalid";
+            responseMessage = "DATE IS INVALID";
         } else {
             List<EntityTransaction> entityTransactionList = repositoryTransaction.findAllByDateBetween(
                     getDate(from),
@@ -130,19 +130,19 @@ public class ServiceApplicationImpl implements ServiceApplication {
                 String date = new SimpleDateFormat("dd MMM yyyy").format(entityTransaction.getDate());
 
                 ResponseTransaction.DataTransaction dataTransaction = new ResponseTransaction.DataTransaction();
-                dataTransaction.setId(entityTransaction.getId());
-                dataTransaction.setUserId(entityTransaction.getUserId());
+                dataTransaction.setId(String.valueOf(entityTransaction.getId()));
+                dataTransaction.setUserId(String.valueOf(entityTransaction.getUserId()));
                 dataTransaction.setUserName(entityTransaction.getUserName());
                 dataTransaction.setType(entityTransaction.getType());
                 dataTransaction.setCurrency(entityTransaction.getCurrency());
-                dataTransaction.setAmount(entityTransaction.getAmount());
-                dataTransaction.setDate(date);
+                dataTransaction.setAmount(String.valueOf(entityTransaction.getAmount()));
+                dataTransaction.setDate(date.toUpperCase());
 
                 dataTransactionList.add(dataTransaction);
             }
 
             responseCode = "200";
-            responseMessage = "Success";
+            responseMessage = "SUCCESS";
             responseListTransaction.setData(dataTransactionList);
         }
 
@@ -154,33 +154,33 @@ public class ServiceApplicationImpl implements ServiceApplication {
     @Override
     public ResponseTransaction getTransactionsByUserId(String id) {
         ResponseTransaction responseListTransaction = new ResponseTransaction();
-        Optional<EntityUser> entityUser = repositoryUser.findById(id);
+        Optional<EntityUser> entityUser = repositoryUser.findById(Long.valueOf(id));
 
         String responseCode = "400", responseMessage;
         if (entityUser.isPresent()) {
-            List<EntityTransaction> entityTransactionList = repositoryTransaction.findAllByUserId(id);
+            List<EntityTransaction> entityTransactionList = repositoryTransaction.findAllByUserId(Long.valueOf(id));
 
             List<ResponseTransaction.DataTransaction> dataTransactionList = new ArrayList<>();
             for (EntityTransaction entityTransaction : entityTransactionList) {
                 String date = new SimpleDateFormat("dd MMM yyyy").format(entityTransaction.getDate());
 
                 ResponseTransaction.DataTransaction dataTransaction = new ResponseTransaction.DataTransaction();
-                dataTransaction.setId(entityTransaction.getId());
-                dataTransaction.setUserId(entityTransaction.getUserId());
+                dataTransaction.setId(String.valueOf(entityTransaction.getId()));
+                dataTransaction.setUserId(String.valueOf(entityTransaction.getUserId()));
                 dataTransaction.setUserName(entityTransaction.getUserName());
                 dataTransaction.setType(entityTransaction.getType());
                 dataTransaction.setCurrency(entityTransaction.getCurrency());
-                dataTransaction.setAmount(entityTransaction.getAmount());
-                dataTransaction.setDate(date);
+                dataTransaction.setAmount(String.valueOf(entityTransaction.getAmount()));
+                dataTransaction.setDate(date.toUpperCase());
 
                 dataTransactionList.add(dataTransaction);
             }
 
             responseCode = "200";
-            responseMessage = "Success";
+            responseMessage = "SUCCESS";
             responseListTransaction.setData(dataTransactionList);
         } else {
-            responseMessage = "User Id Unregistered";
+            responseMessage = "USER ID UNREGISTERED";
         }
 
         responseListTransaction.setResponseCode(responseCode);
@@ -197,52 +197,52 @@ public class ServiceApplicationImpl implements ServiceApplication {
         ResponseTransaction responseTransaction = new ResponseTransaction();
         String responseCode = "400", responseMessage;
         if (userId.isEmpty()) {
-            responseMessage = "User Id Can't be Empty";
+            responseMessage = "USER ID CAN'T BE EMPTY";
         } else if (!userId.replace(" ", "").chars().allMatch(Character::isDigit)) {
-            responseMessage = "User Id Must be NUMERICAL Characters";
+            responseMessage = "USER ID MUST BE NUMERICAL CHARACTERS";
         } else if (type.isEmpty()) {
-            responseMessage = "Transaction Type Can't be Empty";
+            responseMessage = "TRANSACTION TYPE CAN'T BE EMPTY";
         } else if (!isTypeTransaction(type)) {
-            responseMessage = "Transaction Type Unregistered";
+            responseMessage = "TRANSACTION TYPE UNREGISTERED";
         } else if (amount.isEmpty()) {
-            responseMessage = "Amount Can't be Empty";
-        } else if (!amount.chars().allMatch(Character::isDigit)) {
-            responseMessage = "Amount Must be NUMERICAL Characters";
+            responseMessage = "AMOUNT CAN'T BE EMPTY";
+        } else if (!amount.replaceAll("[-+]", "").chars().allMatch(Character::isDigit)) {
+            responseMessage = "AMOUNT MUST BE NUMERICAL CHARACTERS";
         } else if (Integer.parseInt(amount) < 0) {
-            responseMessage = "Amount Can't be Negative";
+            responseMessage = "AMOUNT CAN'T BE NEGATIVE";
         } else {
-            Optional<EntityUser> entityUser = repositoryUser.findById(userId);
+            Optional<EntityUser> entityUser = repositoryUser.findById(Long.valueOf(userId));
             if (entityUser.isPresent()) {
-                String id = "02" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+                String id = "12" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
                 String name = entityUser.get().getName();
 
                 EntityTransaction entityTransaction = new EntityTransaction();
-                entityTransaction.setId(id);
-                entityTransaction.setUserId(userId);
+                entityTransaction.setId(Long.valueOf(id));
+                entityTransaction.setUserId(Long.valueOf(userId));
                 entityTransaction.setUserName(name);
                 entityTransaction.setType(type);
                 entityTransaction.setCurrency("IDR");
-                entityTransaction.setAmount(amount);
+                entityTransaction.setAmount(Long.valueOf(amount));
                 entityTransaction.setDate(new Date());
                 repositoryTransaction.save(entityTransaction);
 
                 responseCode = "201";
-                responseMessage = "Success";
+                responseMessage = "SUCCESS";
 
                 String dateNew = new SimpleDateFormat("dd MMM yyyy").format(entityTransaction.getDate());
 
                 ResponseTransaction.DataTransaction dataTransaction = new ResponseTransaction.DataTransaction();
-                dataTransaction.setId(entityTransaction.getId());
-                dataTransaction.setUserId(entityTransaction.getUserId());
+                dataTransaction.setId(String.valueOf(entityTransaction.getId()));
+                dataTransaction.setUserId(String.valueOf(entityTransaction.getUserId()));
                 dataTransaction.setUserName(entityTransaction.getUserName());
                 dataTransaction.setType(entityTransaction.getType());
                 dataTransaction.setCurrency(entityTransaction.getCurrency());
-                dataTransaction.setAmount(entityTransaction.getAmount());
+                dataTransaction.setAmount(String.valueOf(entityTransaction.getAmount()));
                 dataTransaction.setDate(dateNew);
 
                 responseTransaction.setData(dataTransaction);
             } else {
-                responseMessage = "User Id Unregistered";
+                responseMessage = "USER ID UNREGISTERED";
             }
         }
 

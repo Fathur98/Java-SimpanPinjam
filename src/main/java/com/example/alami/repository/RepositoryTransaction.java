@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface RepositoryTransaction extends JpaRepository<EntityTransaction, String> {
+public interface RepositoryTransaction extends JpaRepository<EntityTransaction, Long> {
 
     List<EntityTransaction> findAllByDateBetween(Date from, Date to);
 
-    List<EntityTransaction> findAllByUserId(String id);
+    List<EntityTransaction> findAllByUserId(Long id);
 
 }

@@ -19,7 +19,7 @@ public class EntityUser {
 
     @Id
     @Column(name = "ID")
-    private String id;
+    private Long id;
 
     @Column(name = "NAME")
     private String name;

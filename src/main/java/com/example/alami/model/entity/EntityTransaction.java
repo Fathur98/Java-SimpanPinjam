@@ -19,10 +19,10 @@ public class EntityTransaction {
 
     @Id
     @Column(name = "ID")
-    private String id;
+    private Long id;
 
     @Column(name = "USER_ID")
-    private String userId;
+    private Long userId;
 
     @Column(name = "USER_NAME")
     private String userName;
@@ -34,7 +34,7 @@ public class EntityTransaction {
     private String currency;
 
     @Column(name = "AMOUNT")
-    private String amount;
+    private Long amount;
 
     @Column(name = "DATE")
     private Date date;
