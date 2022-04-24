@@ -2,8 +2,6 @@ package com.example.alami.controller;
 
 import com.example.alami.model.request.RequestAddTransaction;
 import com.example.alami.model.request.RequestAddUser;
-import com.example.alami.model.response.ResponseListTransaction;
-import com.example.alami.model.response.ResponseListUser;
 import com.example.alami.model.response.ResponseTransaction;
 import com.example.alami.model.response.ResponseUser;
 import com.example.alami.service.ServiceApplication;
@@ -18,7 +16,7 @@ public class ControllerApplication {
     ServiceApplication serviceApplication;
 
     @GetMapping(value = "/users")
-    public ResponseListUser getUsers() {
+    public ResponseUser getUsers() {
         return serviceApplication.getUsers();
     }
 
@@ -28,12 +26,12 @@ public class ControllerApplication {
     }
 
     @GetMapping(value = "/transactions/from={from}/to={to}")
-    public ResponseListTransaction getTransactionByDate(@PathVariable String from, @PathVariable String to) {
+    public ResponseTransaction getTransactionByDate(@PathVariable String from, @PathVariable String to) {
         return serviceApplication.getTransactionsByDate(from, to);
     }
 
     @GetMapping(value = "/transactions/{id}")
-    public ResponseListTransaction getTransactionByUserId(@PathVariable String id) {
+    public ResponseTransaction getTransactionByUserId(@PathVariable String id) {
         return serviceApplication.getTransactionsByUserId(id);
     }
 

@@ -21,7 +21,7 @@ public class ResponseTransaction {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("data")
-    private DataTransaction data;
+    private Object data;
 
     @Data
     @NoArgsConstructor

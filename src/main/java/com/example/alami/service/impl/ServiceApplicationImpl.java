@@ -4,8 +4,6 @@ import com.example.alami.model.entity.EntityTransaction;
 import com.example.alami.model.entity.EntityUser;
 import com.example.alami.model.request.RequestAddTransaction;
 import com.example.alami.model.request.RequestAddUser;
-import com.example.alami.model.response.ResponseListTransaction;
-import com.example.alami.model.response.ResponseListUser;
 import com.example.alami.model.response.ResponseTransaction;
 import com.example.alami.model.response.ResponseUser;
 import com.example.alami.repository.RepositoryTransaction;
@@ -28,14 +26,14 @@ public class ServiceApplicationImpl implements ServiceApplication {
     RepositoryTransaction repositoryTransaction;
 
     @Override
-    public ResponseListUser getUsers() {
+    public ResponseUser getUsers() {
         List<EntityUser> entityUserList = repositoryUser.findAll();
 
-        List<ResponseListUser.DataUser> dataUserList = new ArrayList<>();
+        List<ResponseUser.DataUser> dataUserList = new ArrayList<>();
         for (EntityUser entityUser : entityUserList) {
             String dateOfBirth = new SimpleDateFormat("dd MMM yyyy").format(entityUser.getDateOfBirth());
 
-            ResponseListUser.DataUser dataUser = new ResponseListUser.DataUser();
+            ResponseUser.DataUser dataUser = new ResponseUser.DataUser();
             dataUser.setId(entityUser.getId());
             dataUser.setName(entityUser.getName());
             dataUser.setDateOfBirth(dateOfBirth);
@@ -44,7 +42,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
             dataUserList.add(dataUser);
         }
 
-        ResponseListUser responseListUser = new ResponseListUser();
+        ResponseUser responseListUser = new ResponseUser();
         responseListUser.setResponseCode("200");
         responseListUser.setResponseMessage("Success");
         responseListUser.setData(dataUserList);
@@ -107,8 +105,8 @@ public class ServiceApplicationImpl implements ServiceApplication {
     }
 
     @Override
-    public ResponseListTransaction getTransactionsByDate(String from, String to) {
-        ResponseListTransaction responseListTransaction = new ResponseListTransaction();
+    public ResponseTransaction getTransactionsByDate(String from, String to) {
+        ResponseTransaction responseListTransaction = new ResponseTransaction();
 
         String responseCode = "400", responseMessage;
         if (from.isEmpty() || to.isEmpty()) {
@@ -127,11 +125,11 @@ public class ServiceApplicationImpl implements ServiceApplication {
                     new Date(Objects.requireNonNull(getDate(to)).getTime() + 1000 * 60 * 60 * 24)
             );
 
-            List<ResponseListTransaction.DataTransaction> dataTransactionList = new ArrayList<>();
+            List<ResponseTransaction.DataTransaction> dataTransactionList = new ArrayList<>();
             for (EntityTransaction entityTransaction : entityTransactionList) {
                 String date = new SimpleDateFormat("dd MMM yyyy").format(entityTransaction.getDate());
 
-                ResponseListTransaction.DataTransaction dataTransaction = new ResponseListTransaction.DataTransaction();
+                ResponseTransaction.DataTransaction dataTransaction = new ResponseTransaction.DataTransaction();
                 dataTransaction.setId(entityTransaction.getId());
                 dataTransaction.setUserId(entityTransaction.getUserId());
                 dataTransaction.setUserName(entityTransaction.getUserName());
@@ -154,19 +152,19 @@ public class ServiceApplicationImpl implements ServiceApplication {
     }
 
     @Override
-    public ResponseListTransaction getTransactionsByUserId(String id) {
-        ResponseListTransaction responseListTransaction = new ResponseListTransaction();
+    public ResponseTransaction getTransactionsByUserId(String id) {
+        ResponseTransaction responseListTransaction = new ResponseTransaction();
         Optional<EntityUser> entityUser = repositoryUser.findById(id);
 
         String responseCode = "400", responseMessage;
         if (entityUser.isPresent()) {
             List<EntityTransaction> entityTransactionList = repositoryTransaction.findAllByUserId(id);
 
-            List<ResponseListTransaction.DataTransaction> dataTransactionList = new ArrayList<>();
+            List<ResponseTransaction.DataTransaction> dataTransactionList = new ArrayList<>();
             for (EntityTransaction entityTransaction : entityTransactionList) {
                 String date = new SimpleDateFormat("dd MMM yyyy").format(entityTransaction.getDate());
 
-                ResponseListTransaction.DataTransaction dataTransaction = new ResponseListTransaction.DataTransaction();
+                ResponseTransaction.DataTransaction dataTransaction = new ResponseTransaction.DataTransaction();
                 dataTransaction.setId(entityTransaction.getId());
                 dataTransaction.setUserId(entityTransaction.getUserId());
                 dataTransaction.setUserName(entityTransaction.getUserName());

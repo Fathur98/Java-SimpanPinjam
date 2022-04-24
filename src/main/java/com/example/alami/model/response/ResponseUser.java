@@ -21,7 +21,7 @@ public class ResponseUser {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("data")
-    private DataUser data;
+    private Object data;
 
     @Data
     @NoArgsConstructor
