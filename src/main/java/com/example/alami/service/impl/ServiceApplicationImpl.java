@@ -253,11 +253,11 @@ public class ServiceApplicationImpl implements ServiceApplication {
         return responseTransaction;
     }
 
-    private Boolean isTypeTransaction(String type) {
+    public Boolean isTypeTransaction(String type) {
         return type.matches("PENYERAHAN DANA|PENGAMBILAN DANA|PEMINJAMAN DANA|PENGEMBALIAN DANA");
     }
 
-    private Date getDate(String date) {
+    public Date getDate(String date) {
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyyyy");
             return simpleDateFormat.parse(date);
@@ -267,7 +267,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
         }
     }
 
-    private Boolean isFormatDate(String date) {
+    public Boolean isFormatDate(String date) {
         return date.matches("^((0[1-9]|[12]\\d|3[01])(0[1-9]|1[012])(19|2[01])\\d\\d)$");
     }
 
