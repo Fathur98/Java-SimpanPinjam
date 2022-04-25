@@ -26,30 +26,30 @@ public class UtilSampleData implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         EntityUser entityUserWawan = new EntityUser();
         entityUserWawan.setId(1120220101000000001L);
-        entityUserWawan.setName("WAWAN SETIAWAN");
+        entityUserWawan.setName("Wawan Setiawan");
         entityUserWawan.setDateOfBirth(getDate("10011990"));
-        entityUserWawan.setAddress("KOMPLEKS ASIA SERASI NO 100");
+        entityUserWawan.setAddress("Kompleks Asia Serasi No 100");
         repositoryUser.save(entityUserWawan);
 
         EntityUser entityUserTeguh = new EntityUser();
         entityUserTeguh.setId(1120220101000000002L);
-        entityUserTeguh.setName("TEGUH SUDIBYANTORO");
+        entityUserTeguh.setName("Teguh Sudibyantoro");
         entityUserTeguh.setDateOfBirth(getDate("10021991"));
-        entityUserTeguh.setAddress("JALAN PAMEKARAN NO 99");
+        entityUserTeguh.setAddress("Jalan Pamekaran No 99");
         repositoryUser.save(entityUserTeguh);
 
         EntityUser entityUserJoko = new EntityUser();
         entityUserJoko.setId(1120220101000000003L);
-        entityUserJoko.setName("JOKO WIDODO");
+        entityUserJoko.setName("Joko Widodo");
         entityUserJoko.setDateOfBirth(getDate("10031992"));
-        entityUserJoko.setAddress("DUSUN PISANG RT 10 RW 20");
+        entityUserJoko.setAddress("Dusun Pisang RT 10 RW 20");
         repositoryUser.save(entityUserJoko);
 
         EntityTransaction entityTransactionSatu = new EntityTransaction();
         entityTransactionSatu.setId(1220220101000000001L);
         entityTransactionSatu.setUserId(1120220101000000001L);
-        entityTransactionSatu.setUserName("WAWAN SETIAWAN");
-        entityTransactionSatu.setType("PENYERAHAN DANA");
+        entityTransactionSatu.setUserName("Wawan Setiawan");
+        entityTransactionSatu.setType("Penyerahan Dana");
         entityTransactionSatu.setCurrency("IDR");
         entityTransactionSatu.setAmount(1000000L);
         entityTransactionSatu.setDate(getDate("17082020"));
@@ -58,8 +58,8 @@ public class UtilSampleData implements ApplicationRunner {
         EntityTransaction entityTransactionDua = new EntityTransaction();
         entityTransactionDua.setId(1220220101000000002L);
         entityTransactionDua.setUserId(1120220101000000002L);
-        entityTransactionDua.setUserName("TEGUH SUDIBYANTORO");
-        entityTransactionDua.setType("PENYERAHAN DANA");
+        entityTransactionDua.setUserName("Teguh Sudibyantoro");
+        entityTransactionDua.setType("Penyerahan Dana");
         entityTransactionDua.setCurrency("IDR");
         entityTransactionDua.setAmount(5000000L);
         entityTransactionDua.setDate(getDate("18082020"));
@@ -68,8 +68,8 @@ public class UtilSampleData implements ApplicationRunner {
         EntityTransaction entityTransactionTiga = new EntityTransaction();
         entityTransactionTiga.setId(1220220101000000003L);
         entityTransactionTiga.setUserId(1120220101000000003L);
-        entityTransactionTiga.setUserName("JOKO WIDODO");
-        entityTransactionTiga.setType("PEMINJAMAN DANA");
+        entityTransactionTiga.setUserName("Joko Widodo");
+        entityTransactionTiga.setType("Peminjaman Dana");
         entityTransactionTiga.setCurrency("IDR");
         entityTransactionTiga.setAmount(2000000L);
         entityTransactionTiga.setDate(getDate("30092020"));
@@ -78,8 +78,8 @@ public class UtilSampleData implements ApplicationRunner {
         EntityTransaction entityTransactionEmpat = new EntityTransaction();
         entityTransactionEmpat.setId(1220220101000000004L);
         entityTransactionEmpat.setUserId(1120220101000000003L);
-        entityTransactionEmpat.setUserName("JOKO WIDODO");
-        entityTransactionEmpat.setType("PENGEMBALIAN DANA");
+        entityTransactionEmpat.setUserName("Joko Widodo");
+        entityTransactionEmpat.setType("Pengembalian Dana");
         entityTransactionEmpat.setCurrency("IDR");
         entityTransactionEmpat.setAmount(1000000L);
         entityTransactionEmpat.setDate(getDate("10112020"));
@@ -88,8 +88,8 @@ public class UtilSampleData implements ApplicationRunner {
         EntityTransaction entityTransactionLima = new EntityTransaction();
         entityTransactionLima.setId(1220220101000000005L);
         entityTransactionLima.setUserId(1120220101000000001L);
-        entityTransactionLima.setUserName("WAWAN SETIAWAN");
-        entityTransactionLima.setType("PENYERAHAN DANA");
+        entityTransactionLima.setUserName("Wawan Setiawan");
+        entityTransactionLima.setType("Penyerahan Dana");
         entityTransactionLima.setCurrency("IDR");
         entityTransactionLima.setAmount(5000000L);
         entityTransactionLima.setDate(getDate("01122020"));
@@ -98,8 +98,8 @@ public class UtilSampleData implements ApplicationRunner {
         EntityTransaction entityTransactionEnam = new EntityTransaction();
         entityTransactionEnam.setId(1220220101000000006L);
         entityTransactionEnam.setUserId(1120220101000000002L);
-        entityTransactionEnam.setUserName("TEGUH SUDIBYANTORO");
-        entityTransactionEnam.setType("PENGAMBILAN DANA");
+        entityTransactionEnam.setUserName("Teguh Sudibyantoro");
+        entityTransactionEnam.setType("Pengambilan Dana");
         entityTransactionEnam.setCurrency("IDR");
         entityTransactionEnam.setAmount(2000000L);
         entityTransactionEnam.setDate(getDate("01122020"));

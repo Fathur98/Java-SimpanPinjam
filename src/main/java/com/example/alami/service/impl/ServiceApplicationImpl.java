@@ -44,7 +44,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
 
         ResponseUser responseListUser = new ResponseUser();
         responseListUser.setResponseCode("200");
-        responseListUser.setResponseMessage("SUCCESS");
+        responseListUser.setResponseMessage("Success");
         responseListUser.setData(dataUserList);
         return responseListUser;
     }
@@ -58,23 +58,23 @@ public class ServiceApplicationImpl implements ServiceApplication {
         ResponseUser responseUser = new ResponseUser();
         String responseCode = "400", responseMessage;
         if (name.isEmpty()) {
-            responseMessage = "NAME CAN'T BE EMPTY";
+            responseMessage = "Name Can't be Empty";
         } else if (name.length() > 35) {
-            responseMessage = "MAX CHARACTER FOR NAME IS 35 CHARACTERS";
+            responseMessage = "Max Character for Name is 35 Characters";
         } else if (!name.replace(" ", "").chars().allMatch(Character::isLetter)) {
-            responseMessage = "NAME MUST BE ALPHABETICAL CHARACTERS";
+            responseMessage = "Name Must be Alphabetical Characters";
         } else if (dateOfBirth.isEmpty()) {
-            responseMessage = "DATE OF BIRTH CAN'T BE EMPTY";
+            responseMessage = "Date of Birth Can't be Empty";
         } else if (dateOfBirth.length() > 8 || !isFormatDate(dateOfBirth)) {
-            responseMessage = "DATE OF BIRTH MUST IN DDMMYYYY FORMAT";
+            responseMessage = "Date of Birth Must in DDMMYYYY Format";
         } else if (Objects.requireNonNull(getDate(dateOfBirth)).after(new Date())) {
-            responseMessage = "DATE OF BIRTH IS INVALID";
+            responseMessage = "Date of Birth is Invalid";
         } else if (address.isEmpty()) {
-            responseMessage = "ADDRESS CAN'T BE EMPTY";
+            responseMessage = "Address Can't be Empty";
         } else if (address.length() > 35) {
-            responseMessage = "MAX CHARACTER FOR ADDRESS IS 35 CHARACTERS";
+            responseMessage = "Max Character for Address is 35 Characters";
         } else if (!address.replace(" ", "").chars().allMatch(Character::isLetterOrDigit)) {
-            responseMessage = "ADDRESS MUST BE ALPHABETICAL OR NUMERICAL CHARACTERS";
+            responseMessage = "Address Must be Alphabetical or Numerical Characters";
         } else {
             String id = "11" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
 
@@ -86,7 +86,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
             repositoryUser.save(entityUser);
 
             responseCode = "201";
-            responseMessage = "SUCCESS";
+            responseMessage = "Success";
 
             String dateOfBirthNew = new SimpleDateFormat("dd MMM yyyy").format(entityUser.getDateOfBirth());
 
@@ -110,15 +110,15 @@ public class ServiceApplicationImpl implements ServiceApplication {
 
         String responseCode = "400", responseMessage;
         if (from.isEmpty() || to.isEmpty()) {
-            responseMessage = "DATE CAN'T BE EMPTY";
+            responseMessage = "Date Can't be Empty";
         } else if (from.length() > 8 || !isFormatDate(from) || to.length() > 8 || !isFormatDate(to)) {
-            responseMessage = "DATE MUST IN DDMMYYYY FORMAT";
+            responseMessage = "Date Must in DDMMYYYY Format";
         } else if (Objects.requireNonNull(getDate(from)).after(new Date())) {
-            responseMessage = "DATE IS INVALID";
+            responseMessage = "Date is Invalid";
         } else if (Objects.requireNonNull(getDate(to)).after(new Date())) {
-            responseMessage = "DATE IS INVALID";
+            responseMessage = "Date is Invalid";
         } else if (Objects.requireNonNull(getDate(from)).after(getDate(to))) {
-            responseMessage = "DATE IS INVALID";
+            responseMessage = "Date is Invalid";
         } else {
             List<EntityTransaction> entityTransactionList = repositoryTransaction.findAllByDateBetween(
                     getDate(from),
@@ -142,7 +142,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
             }
 
             responseCode = "200";
-            responseMessage = "SUCCESS";
+            responseMessage = "Success";
             responseListTransaction.setData(dataTransactionList);
         }
 
@@ -177,10 +177,10 @@ public class ServiceApplicationImpl implements ServiceApplication {
             }
 
             responseCode = "200";
-            responseMessage = "SUCCESS";
+            responseMessage = "Success";
             responseListTransaction.setData(dataTransactionList);
         } else {
-            responseMessage = "USER ID UNREGISTERED";
+            responseMessage = "User Id Unregistered";
         }
 
         responseListTransaction.setResponseCode(responseCode);
@@ -197,19 +197,19 @@ public class ServiceApplicationImpl implements ServiceApplication {
         ResponseTransaction responseTransaction = new ResponseTransaction();
         String responseCode = "400", responseMessage;
         if (userId.isEmpty()) {
-            responseMessage = "USER ID CAN'T BE EMPTY";
+            responseMessage = "User Id Can't be Empty";
         } else if (!userId.replace(" ", "").chars().allMatch(Character::isDigit)) {
-            responseMessage = "USER ID MUST BE NUMERICAL CHARACTERS";
+            responseMessage = "User Id Must be Numerical Characters";
         } else if (type.isEmpty()) {
-            responseMessage = "TRANSACTION TYPE CAN'T BE EMPTY";
+            responseMessage = "Transaction Type Can't be Empty";
         } else if (!isTypeTransaction(type)) {
-            responseMessage = "TRANSACTION TYPE UNREGISTERED";
+            responseMessage = "Transaction Type Unregistered";
         } else if (amount.isEmpty()) {
-            responseMessage = "AMOUNT CAN'T BE EMPTY";
+            responseMessage = "Amount Can't be Empty";
         } else if (!amount.replaceAll("[-+]", "").chars().allMatch(Character::isDigit)) {
-            responseMessage = "AMOUNT MUST BE NUMERICAL CHARACTERS";
+            responseMessage = "Amount Must be Numerical Characters";
         } else if (Integer.parseInt(amount) < 0) {
-            responseMessage = "AMOUNT CAN'T BE NEGATIVE";
+            responseMessage = "Amount Can't be Negative";
         } else {
             Optional<EntityUser> entityUser = repositoryUser.findById(Long.valueOf(userId));
             if (entityUser.isPresent()) {
@@ -227,7 +227,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
                 repositoryTransaction.save(entityTransaction);
 
                 responseCode = "201";
-                responseMessage = "SUCCESS";
+                responseMessage = "Success";
 
                 String dateNew = new SimpleDateFormat("dd MMM yyyy").format(entityTransaction.getDate());
 
@@ -242,7 +242,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
 
                 responseTransaction.setData(dataTransaction);
             } else {
-                responseMessage = "USER ID UNREGISTERED";
+                responseMessage = "User Id Unregistered";
             }
         }
 
@@ -252,7 +252,7 @@ public class ServiceApplicationImpl implements ServiceApplication {
     }
 
     public Boolean isTypeTransaction(String type) {
-        return type.matches("PENYERAHAN DANA|PENGAMBILAN DANA|PEMINJAMAN DANA|PENGEMBALIAN DANA");
+        return type.matches("Penyerahan Dana|Pengambilan Dana|Peminjaman Dana|Pengembalian Dana");
     }
 
     public Date getDate(String date) {

@@ -29,7 +29,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"200\",\"response_message\":\"SUCCESS\"";
+            String response = "\"response_code\":\"200\",\"response_message\":\"Success\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"200\",\"response_message\":\"SUCCESS\"";
+            String response = "\"response_code\":\"200\",\"response_message\":\"Success\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"400\",\"response_message\":\"USER ID UNREGISTERED\"";
+            String response = "\"response_code\":\"400\",\"response_message\":\"User Id Unregistered\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,7 +83,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"200\",\"response_message\":\"SUCCESS\"";
+            String response = "\"response_code\":\"200\",\"response_message\":\"Success\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,7 +101,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"400\",\"response_message\":\"DATE MUST IN DDMMYYYY FORMAT\"";
+            String response = "\"response_code\":\"400\",\"response_message\":\"Date Must in DDMMYYYY Format\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,9 +113,9 @@ public class ServiceApplicationImplIntegrationTest {
         try {
             String request = "" +
                     "{" +
-                    "\"name\":\"FATHUR RAHMAN JAMIL\"," +
+                    "\"name\":\"Fathur Rahman Jamil\"," +
                     "\"date_of_birth\":\"27061997\"," +
-                    "\"address\":\"JALAN BALADEWA UTARA NO 8\"" +
+                    "\"address\":\"Jalan Baladewa Utara No 8\"" +
                     "}";
             MvcResult mvcResult = mockMvc
                     .perform(MockMvcRequestBuilders
@@ -127,7 +127,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"201\",\"response_message\":\"SUCCESS\"";
+            String response = "\"response_code\":\"201\",\"response_message\":\"Success\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,9 +139,9 @@ public class ServiceApplicationImplIntegrationTest {
         try {
             String request = "" +
                     "{" +
-                    "\"name\":\"FATHUR RAHMAN JAMIL\"," +
+                    "\"name\":\"Fathur Rahman Jamil\"," +
                     "\"date_of_birth\":\"27062099\"," +
-                    "\"address\":\"JALAN BALADEWA UTARA NO 8\"" +
+                    "\"address\":\"Jalan Baladewa Utara No 8\"" +
                     "}";
             MvcResult mvcResult = mockMvc
                     .perform(MockMvcRequestBuilders
@@ -153,7 +153,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"400\",\"response_message\":\"DATE OF BIRTH IS INVALID\"";
+            String response = "\"response_code\":\"400\",\"response_message\":\"Date of Birth is Invalid\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,7 +166,7 @@ public class ServiceApplicationImplIntegrationTest {
             String request = "" +
                     "{" +
                     "\"user_id\": \"1120220101000000001\"," +
-                    "\"type\": \"PENYERAHAN DANA\"," +
+                    "\"type\": \"Penyerahan Dana\"," +
                     "\"amount\": \"2000000\"" +
                     "}";
             MvcResult mvcResult = mockMvc
@@ -179,7 +179,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"201\",\"response_message\":\"SUCCESS\"";
+            String response = "\"response_code\":\"201\",\"response_message\":\"Success\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -192,7 +192,7 @@ public class ServiceApplicationImplIntegrationTest {
             String request = "" +
                     "{" +
                     "\"user_id\": \"1120220101000000009\"," +
-                    "\"type\": \"PENYERAHAN DANA\"," +
+                    "\"type\": \"Penyerahan Dana\"," +
                     "\"amount\": \"2000000\"" +
                     "}";
             MvcResult mvcResult = mockMvc
@@ -205,7 +205,7 @@ public class ServiceApplicationImplIntegrationTest {
                             .isOk())
                     .andReturn();
             String content = mvcResult.getResponse().getContentAsString();
-            String response = "\"response_code\":\"400\",\"response_message\":\"USER ID UNREGISTERED\"";
+            String response = "\"response_code\":\"400\",\"response_message\":\"User Id Unregistered\"";
             Assertions.assertTrue(content.contains(response));
         } catch (Exception e) {
             e.printStackTrace();

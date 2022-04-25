@@ -14,12 +14,12 @@ public class ServiceApplicationImplUnitTest {
 
     @Test
     void testIsTypeTransaction1() {
-        Assertions.assertTrue(application.isTypeTransaction("PENYERAHAN DANA"));
+        Assertions.assertTrue(application.isTypeTransaction("Penyerahan Dana"));
     }
 
     @Test
     void testIsTypeTransaction2() {
-        Assertions.assertFalse(application.isTypeTransaction("PENYEMANGAT DANA"));
+        Assertions.assertFalse(application.isTypeTransaction("Penyemangat Dana"));
     }
 
     @Test
